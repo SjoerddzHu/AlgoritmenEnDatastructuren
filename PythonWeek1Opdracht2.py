@@ -1,11 +1,18 @@
-a = '1zin8met9getallen2'
 def getNumbers(s):
-    l = []
-    for x in range(0,len(s)):
-        if s[x].isdigit() == True:
-            l.append(int(s[x]))
-    return l
+    numberlist = []
+    last = False
+    for i in s:
+        if i.isdigit():
+            if last:
+                numberlist[len(numberlist) - 1] *= 10
+                numberlist[len(numberlist) - 1] += int(i)
+            else:
+                numberlist.append(int(i))
+            last = True
+        else:
+            last = False
+    return numberlist
 
-print(getNumbers(a))
-
+mystring = "1zin8met9getallen2"
+print(getNumbers(mystring))
 
