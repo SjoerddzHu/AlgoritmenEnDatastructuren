@@ -1,9 +1,19 @@
-def ZeefEratosthenes(n):
-    multiples = []
-    for i in range(2, n+1):
-        if i not in multiples:
-            print (i)
-            for j in range(i*i, n+1, i):
-                multiples.append(j)
+def zeef(limit):
+    lmt = limit +1
+    prm = dict()
+    for i in range(2,lmt):
+        prm[i]=True
 
-ZeefEratosthenes(1000)
+    for i in prm:
+        factors = range(i, lmt, i)
+        for i2 in factors[1:]:
+            prm[i2] = False
+
+    count = 0
+    all_primes = []
+    for i in prm:
+        if prm[i]:
+            all_primes.append(i)
+            count+=1
+    return all_primes
+print(zeef(1000))
